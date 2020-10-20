@@ -20,6 +20,7 @@ export class LogInComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    console.log(email, password);
+    console.log(form.value);
+    form.reset();
   }
 }
