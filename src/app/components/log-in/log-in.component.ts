@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Usermodel } from '../../models/user.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -8,19 +10,29 @@ import { NgForm } from '@angular/forms';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  user: Usermodel;
+
+  constructor(
+    private authSrv: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.user = new Usermodel();
   }
 
   onSubmit(form: NgForm) {
     if (!form.valid) {
       return;
     }
-    const email = form.value.email;
-    const password = form.value.password;
 
-    console.log(form.value);
+    this.authSrv.logIn(form.value).subscribe(
+      resp => {
+        console.log(resp);
+      },
+      err => {
+        console.log(err.error.error.message);
+      }
+    )
     form.reset();
   }
 }
