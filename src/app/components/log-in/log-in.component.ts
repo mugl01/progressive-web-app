@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LogInComponent implements OnInit {
 
-  user: Usermodel;
+  user: Usermodel = new Usermodel();
 
   constructor(
     private authSrv: AuthService,
@@ -19,7 +19,7 @@ export class LogInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user = new Usermodel();
+
   }
 
   onSubmit(form: NgForm) {
@@ -30,6 +30,7 @@ export class LogInComponent implements OnInit {
     this.authSrv.logIn(form.value).subscribe(
       resp => {
         console.log(resp);
+        localStorage.setItem('email', resp['email']);
         this.router.navigateByUrl('/counter');
       },
       err => {
