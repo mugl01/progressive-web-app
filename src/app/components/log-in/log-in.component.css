@@ -12,3 +12,7 @@ form div{
 form div button {
     width: 100%;
 }
+
+mat-icon {
+    font-size: 3em;
+}
