@@ -9,12 +9,18 @@ import { Router } from '@angular/router';
 })
 export class CounterComponent implements OnInit {
 
+  seconds: number;
+  minutes: number;
+  hours: number;
+  days: number;
+
   constructor(
     private authSrv: AuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.calculateDate();
   }
 
   logOut() {
@@ -22,4 +28,30 @@ export class CounterComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  calculateDate() {
+    let differenceMilliSeconds: number;
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const lastUser = JSON.parse(localStorage.getItem('lastUser'));
+    if (user.email === lastUser.email && user.dateAccess !== lastUser.dateAccess) {
+      differenceMilliSeconds = user.dateAccess - lastUser.dateAccess;
+    }
+
+    this.days = Math.floor(differenceMilliSeconds / (24 * 60 * 60 * 1000));
+    if (this.days < 0) { this.days = 0; }
+    differenceMilliSeconds -= this.days * 24 * 60 * 60 * 1000;
+
+    this.hours = Math.floor(differenceMilliSeconds / (60 * 60 * 1000));
+    if (this.hours < 0) { this.hours = 0; }
+    differenceMilliSeconds -= this.hours * 60 * 60 * 1000;
+
+    this.minutes = Math.floor(differenceMilliSeconds / (60 * 1000));
+    if (this.minutes < 0) { this.minutes = 0; }
+    differenceMilliSeconds -= this.minutes * 60 * 1000;
+
+    this.seconds = Math.floor(differenceMilliSeconds / (1000));
+
+  }
+
 }
+
