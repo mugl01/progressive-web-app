@@ -36,7 +36,7 @@ export class LogInComponent implements OnInit {
       err => {
         console.log(err.error.error.message);
       }
-    )
+    );
     form.reset();
   }
 }
