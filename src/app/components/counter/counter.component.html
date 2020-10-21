@@ -1,13 +1,12 @@
-<div>
+<div class="container">
     <h1>Welcome</h1>
-    <p>The last time you accessed was</p>
+    <h2>The last time you accessed was</h2>
     <div>
-        <div>00</div>
-        <div>00</div>
-        <div>00</div>
-        <div>00</div>
+        <p>00 00 00 00 00</p>
     </div>
-     <button 
+     <button
+        mat-raised-button
+        color="warn"
         type="button"
         (click)="logOut()">
         Logout
