@@ -5,16 +5,12 @@
     align-items: center;
 }
 
-
-.logout-button {
-    margin-top: 10vh;
-}
-
 .result-container {
     display: grid;
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: repeat(2, 30px);
     margin-top: 5vh;
+    margin-bottom: 10vh;
 }
 
 .result-container-numbers {

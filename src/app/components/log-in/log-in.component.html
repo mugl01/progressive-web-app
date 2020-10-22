@@ -1,9 +1,13 @@
 <div class="container">
     <div>
-            <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
+            <mat-icon 
+                class="login-icon"
+                aria-hidden="false" 
+                aria-label="Example home icon"
+                >lock</mat-icon>
     </div>
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-        <div>
+        <div class="form-element">
             <mat-form-field>
             <mat-label>Email</mat-label>
             <input
@@ -17,7 +21,7 @@
                 >
             </mat-form-field>
         </div>
-        <div>
+        <div class="form-element">
             <mat-form-field>
             <mat-label>Password</mat-label>
             <input
@@ -31,8 +35,9 @@
                 >
             </mat-form-field>
         </div>
-        <div>
+        <div class="form-element">
             <button
+                class="form-element-submit"
                 mat-raised-button
                 color="primary"
                 type="submit"

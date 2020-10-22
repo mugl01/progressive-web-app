@@ -5,14 +5,14 @@
     align-items: center;
 }
 
-form div{
+.form-element{
     margin-top: 5vh;
 }
 
-form div button {
+.form-element-submit {
     width: 100%;
 }
 
-mat-icon {
+.login-icon {
     font-size: 3em;
 }

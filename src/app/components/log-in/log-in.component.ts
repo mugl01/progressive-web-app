@@ -19,7 +19,6 @@ export class LogInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
   }
 
   onSubmit(form: NgForm) {
@@ -41,7 +40,6 @@ export class LogInComponent implements OnInit {
         this.router.navigateByUrl('/counter');
       },
       err => {
-        console.log(err.error.error.message);
       }
     );
     form.reset();

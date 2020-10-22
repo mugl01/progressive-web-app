@@ -12,13 +12,17 @@ export class AuthService {
   private apiKey = 'AIzaSyBHwEb7ntrMHMvqYj26gHShlNP5wM-RA8o';
 
   userToken: string;
+  token: 'token';
+  expiresIn: 'expiresIn';
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.getToken();
+  }
 
   logOut() {
-    localStorage.removeItem('token');
+    localStorage.removeItem(this.token);
   }
 
   logIn(user: Usermodel) {
@@ -29,8 +33,7 @@ export class AuthService {
     };
 
     return this.http.post(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=
-      ${this.apiKey}`,
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`,
       authData
     ).pipe(
       map(resp => {
@@ -42,39 +45,31 @@ export class AuthService {
   }
 
   private setToken(idToken: string) {
+    const secondsInAnHour = 3600;
     this.userToken = idToken;
-    localStorage.setItem('token', idToken);
+    localStorage.setItem(this.token, idToken);
 
     const today = new Date();
-    today.setSeconds(3600);
+    today.setSeconds(secondsInAnHour);
 
-    localStorage.setItem('expiresIn', today.getTime().toString());
+    localStorage.setItem(this.expiresIn, today.getTime().toString());
   }
 
   private getToken() {
-    if (localStorage.getItem('token')) {
-      this.userToken = localStorage.getItem('token');
-    } else {
-      this.userToken = '';
-    }
-
+    this.userToken = localStorage.getItem(this.token) || '';
     return this.userToken;
   }
 
   isAuthenticated(): boolean {
-    if (this.userToken.length < 2) {
+    if (!this.userToken.length) {
       return false;
     }
 
-    const expires = Number(localStorage.getItem('expiresIn'));
+    const expiresInMilliseconds = Number(localStorage.getItem(this.expiresIn));
     const expiresDate = new Date();
-    expiresDate.setTime(expires);
+    expiresDate.setTime(expiresInMilliseconds);
 
-    if (expiresDate > new Date()) {
-      return true;
-    } else {
-      return false;
-    }
+    return expiresDate > new Date();
 
   }
 
