@@ -1,5 +1,4 @@
 import { AppRouting } from './app.routes';
-import { SharedModule } from './shared/shared.module';
 import { ComponentsModule } from './components/components.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,7 +15,6 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     ComponentsModule,
-    SharedModule,
     AppRouting,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

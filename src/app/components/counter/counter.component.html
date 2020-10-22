@@ -2,14 +2,10 @@
     <h1>Welcome</h1>
     <h2>The last time you accessed was</h2>
     <div class="result-container">
-        <div class="result-container-numbers">{{ days }}</div>
-        <div class="result-container-numbers">{{ hours }}</div>
-        <div class="result-container-numbers">{{ minutes }}</div>
-        <div class="result-container-numbers">{{ seconds }}</div>
-        <div>days</div>
-        <div>hours</div>
-        <div>minutes</div>
-        <div>seconds</div>
+        <app-timer-item [time]="days" name="days"></app-timer-item>
+        <app-timer-item [time]="hours" name="hours"></app-timer-item>
+        <app-timer-item [time]="minutes" name="minutes"></app-timer-item>
+        <app-timer-item [time]="seconds" name="seconds"></app-timer-item>
     </div>
      <button
         mat-raised-button
