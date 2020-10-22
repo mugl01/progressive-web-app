@@ -38,20 +38,24 @@ export class CounterComponent implements OnInit {
     }
 
     this.days = Math.floor(differenceMilliSeconds / (24 * 60 * 60 * 1000));
-    if (this.days < 0) { this.days = 0; }
+    if (this.days < 0) {
+      this.days = 0;
+    }
     differenceMilliSeconds -= this.days * 24 * 60 * 60 * 1000;
 
     this.hours = Math.floor(differenceMilliSeconds / (60 * 60 * 1000));
-    if (this.hours < 0) { this.hours = 0; }
+    if (this.hours < 0) {
+      this.hours = 0;
+    }
     differenceMilliSeconds -= this.hours * 60 * 60 * 1000;
 
     this.minutes = Math.floor(differenceMilliSeconds / (60 * 1000));
-    if (this.minutes < 0) { this.minutes = 0; }
+    if (this.minutes < 0) {
+      this.minutes = 0;
+    }
     differenceMilliSeconds -= this.minutes * 60 * 1000;
 
     this.seconds = Math.floor(differenceMilliSeconds / (1000));
-
   }
-
 }
 

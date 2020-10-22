@@ -12,6 +12,10 @@ import { AuthService } from '../../services/auth.service';
 export class LogInComponent implements OnInit {
 
   user: Usermodel = new Usermodel();
+  userKeys = {
+    user: 'user',
+    lastUser: 'lastUser'
+  };
 
   constructor(
     private authSrv: AuthService,
@@ -29,8 +33,8 @@ export class LogInComponent implements OnInit {
     this.authSrv.logIn(form.value).subscribe(
       resp => {
         const now = new Date();
-        if (localStorage.getItem('user')) {
-          localStorage.setItem('lastUser', localStorage.getItem('user'));
+        if (localStorage.getItem(this.userKeys.user)) {
+          localStorage.setItem(this.userKeys.lastUser, localStorage.getItem(this.userKeys.user));
         }
         const userData = {
           email: resp['email'],

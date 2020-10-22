@@ -12,11 +12,6 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   canActivate(): boolean {
-    if (this.authSrv.isAuthenticated()) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.authSrv.isAuthenticated();
   }
-
 }
