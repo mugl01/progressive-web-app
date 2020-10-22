@@ -13,7 +13,7 @@ export class AuthService {
 
   userToken: string;
   token: 'token';
-  expiresIn: 'expiresIn';
+  expiresTime: 'expiresTime';
 
   constructor(
     private http: HttpClient
@@ -52,7 +52,7 @@ export class AuthService {
     const today = new Date();
     today.setSeconds(secondsInAnHour);
 
-    localStorage.setItem(this.expiresIn, today.getTime().toString());
+    localStorage.setItem(this.expiresTime, today.getTime().toString());
   }
 
   private getToken() {
@@ -65,7 +65,7 @@ export class AuthService {
       return false;
     }
 
-    const expiresInMilliseconds = Number(localStorage.getItem(this.expiresIn));
+    const expiresInMilliseconds = Number(localStorage.getItem(this.expiresTime));
     const expiresDate = new Date();
     expiresDate.setTime(expiresInMilliseconds);
 
