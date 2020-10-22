@@ -5,12 +5,19 @@
     align-items: center;
 }
 
-p {
-    font-size: 3em;
-    font-weight: 500;
+
+.logout-button {
     margin-top: 10vh;
 }
 
-button {
-    margin-top: 10vh;
+.result-container {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(2, 30px);
+    margin-top: 5vh;
+}
+
+.result-container-numbers {
+    font-size: 3em;
+    font-weight: 500;
 }

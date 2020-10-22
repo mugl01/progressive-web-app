@@ -1,8 +1,15 @@
 <div class="container">
     <h1>Welcome</h1>
     <h2>The last time you accessed was</h2>
-    <div>
-        <p>{{ days }} {{ hours }} {{ minutes }} {{ seconds }}</p>
+    <div class="result-container">
+        <div class="result-container-numbers">{{ days }}</div>
+        <div class="result-container-numbers">{{ hours }}</div>
+        <div class="result-container-numbers">{{ minutes }}</div>
+        <div class="result-container-numbers">{{ seconds }}</div>
+        <div>days</div>
+        <div>hours</div>
+        <div>minutes</div>
+        <div>seconds</div>
     </div>
      <button
         mat-raised-button
