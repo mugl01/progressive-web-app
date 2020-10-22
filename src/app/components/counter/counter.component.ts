@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 })
 export class CounterComponent implements OnInit {
 
-  seconds: number;
-  minutes: number;
-  hours: number;
-  days: number;
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+  days = 0;
 
   constructor(
     private authSrv: AuthService,
